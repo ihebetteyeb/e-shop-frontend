@@ -2,7 +2,7 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { logOut, setToken } from "./state/userSlice";
 
 const accesBaseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:8090",
+  baseUrl: "https://e-shop-8kld.onrender.com",
   // credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const { token } = getState().auth;
@@ -16,7 +16,7 @@ const accesBaseQuery = fetchBaseQuery({
 });
 
 const refreshBaseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:8090",
+  baseUrl: "https://e-shop-8kld.onrender.com",
   credentials: "include",
 });
 
