@@ -1,0 +1,34 @@
+.p-card-footer {
+  padding: 0 0 0 0;
+}
+.p-card-title {
+  display: grid;
+  justify-items: center !important;
+}
+
+#ads .p-button {
+  background-color: rgb(50, 205, 205);
+  border-color: rgb(50, 205, 205);
+}
+
+#ads .p-card-body {
+  padding: 1.25rem;
+  color: black;
+  background-image: url("https://d2bzx2vuetkzse.cloudfront.net/outfits/c60f9601-358e-40d2-ac85-5c0d60483c89.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: contrast(50%);
+}
+#ads .p-card-body:hover {
+  filter: contrast(100%);
+}
+#ads .p-card-title {
+  font-size: 3rem;
+  font-weight: bold;
+
+  color: black;
+}
+
+.p-rating-icon {
+  color: rgb(31, 221, 255);
+}

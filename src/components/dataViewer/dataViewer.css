@@ -1,0 +1,23 @@
+@media (max-width: 1500px) {
+  #search.p-inputtext {
+    width: 80%;
+  }
+}
+
+#filter_price1.p-inputtext {
+  width: 60px;
+}
+#filter_price2.p-inputtext {
+  width: 60px;
+}
+.p-slider .p-slider-range {
+  background: #2fb7ec;
+}
+
+.p-slider:not(.p-disabled) .p-slider-handle:hover {
+  background: #2fb7ec;
+  border-color: #2fb7ec;
+}
+.p-slider .p-slider-handle {
+  border: 2px solid #2fb7ec;
+}

@@ -1,0 +1,12 @@
+.p-card .p-card-footer {
+  padding: 0 0 0 0;
+}
+.p-card-title {
+  display: grid;
+  justify-items: start !important;
+}
+
+.p-button {
+  background-color: #2fb7ec;
+  border-color: #2fb7ec;
+}
