@@ -100,7 +100,7 @@ export default function Header() {
         style={{ fontSize: "1.4rem" }}
         onClick={() => setVisibleRight(true)}
       >
-        <Badge value={cartItems?.length}></Badge>
+        {token && cartItems?.length > 0 && <Badge value={cartItems.length}></Badge>}
       </a>
       {token ? (
         <>
