@@ -8,6 +8,7 @@ import { useRegisterMutation } from "../../../../store/state/userApiSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { InputText } from "primereact/inputtext";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { Dropdown } from "primereact/dropdown";
 import { z } from "zod";
 import { Password } from "primereact/password";
@@ -23,6 +24,7 @@ const cities = [
 
 export default function SignUp() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [Signup, { isLoading, data: dataSignUp }] = useRegisterMutation();
   const handleSignUp = (data) => {
     Signup(data);
@@ -53,6 +55,7 @@ export default function SignUp() {
       console.log("i did signup");
 
       console.log(dataSignUp);
+      navigate("/sign-in");
     }
   }, [dataSignUp]);
 
