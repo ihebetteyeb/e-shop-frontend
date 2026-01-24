@@ -255,7 +255,7 @@ export default function Products() {
   const imageBodyTemplate = (rowData) => {
     return (
       <img
-        src={`https://primefaces.org/cdn/primereact/images/product/${rowData.image}`}
+        src={rowData.image}
         alt={rowData.image}
         className="shadow-2 border-round"
         style={{ width: "64px" }}
@@ -469,7 +469,7 @@ export default function Products() {
       >
         {product.image && (
           <img
-            src={`https://primefaces.org/cdn/primereact/images/product/${product.image}`}
+            src={product.image}
             alt={product.image}
             className="product-image block m-auto pb-3"
           />
