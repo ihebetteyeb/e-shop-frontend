@@ -1,3 +1,5 @@
+// import logoNoBg from "../../../../assets/shopy-logo.svg";
+
 import React, { useState, useEffect } from "react";
 import SigninImg from "@/assets/1.svg";
 // import SigninImg from "../../../assets/1.svg";
@@ -57,20 +59,15 @@ export default function SignUp() {
   if (isLoading) {
     return <p>isLoading...</p>;
   }
-
+  
   return (
     <div className="grid grid-cols-2 h-screen w-screen">
       <div className="flex flex-col justify-center items-center gap-[30px] h-fill bg-[#DEEBFF]">
         <img src={SigninImg} className="h-full " />
       </div>
       <div className="w-full flex flex-col w-full items-center gap-[30px] h-fill ">
-        <div className="w-full flex justify-center">
-          <img
-            alt="logo"
-            src="src/assets/logo-no-background.png"
-            width="90"
-            className="mr-2 mt-2"
-          />
+        <div className="hidden">
+          {/* Logo removed */}
         </div>
         <div>
           <div className="flex flex-col gap-[50px] w-full h-full justify-center ">

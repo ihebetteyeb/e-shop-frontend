@@ -7,7 +7,7 @@ function GlobalLayout({ children }) {
 
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
       <div className="">
         <Header></Header>
       </div>

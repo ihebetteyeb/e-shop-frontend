@@ -11,12 +11,14 @@ export const userSlice = createSlice({
   reducers: {
     setCredentials: (state, action) => {
       console.log(action.payload);
-      state.token = action.payload;
-      // state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.user = action.payload.user;
     },
     logOut: (state) => {
       state.user = {};
       state.token = null;
+      // Clear persisted state
+      localStorage.removeItem("persist:root");
     },
     setToken: (state, action) => {
       console.log(action.payload);
@@ -28,8 +30,8 @@ export const userSlice = createSlice({
   },
 });
 
-export const selectUser = (state) => state.user.user;
-export const selectToken = (state) => state.user.token;
+export const selectUser = (state) => state.auth.user;
+export const selectToken = (state) => state.auth.token;
 
 export const { setCredentials, logOut, setToken, setUser } = userSlice.actions;
 export default userSlice.reducer;

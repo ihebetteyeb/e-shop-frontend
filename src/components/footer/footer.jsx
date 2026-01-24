@@ -1,4 +1,5 @@
 import * as React from "react";
+import logoNoBg from "../../assets/shopy-logo.svg";
 
 const Footer = () => {
   return (
@@ -9,12 +10,12 @@ const Footer = () => {
             <div className="mb-6 md:mb-0">
               <a href="" className="flex items-center">
                 <img
-                  src="src/assets/logo-no-background.png"
-                  className="h-8 me-3"
-                  alt="Logo"
+                  src={logoNoBg}
+                  className="h-10 me-3"
+                  alt="Shopy Logo"
                 />
                 <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-                  e-shop
+                  Shopy
                 </span>
               </a>
             </div>
@@ -81,11 +82,11 @@ const Footer = () => {
           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <div className="sm:flex sm:items-center sm:justify-between">
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-              © 2023{" "}
-              <a href="" className="hover:underline">
-                isi Ariana
+              © 2026 Shopy. All Rights Reserved.
+              <span className="mx-3">|</span>
+              <a href="mailto:ihebetteyeb13@gmail.com" className="text-blue-400 hover:text-blue-300 hover:underline">
+                ihebetteyeb13@gmail.com
               </a>
-              . All Rights Reserved.
             </span>
             <div className="flex mt-4 sm:justify-center sm:mt-0">
               <a

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 import { classNames } from "primereact/utils";
 import { Toast } from "primereact/toast";
@@ -8,20 +9,24 @@ import { Card } from "primereact/card";
 import { Password } from "primereact/password";
 import "./login.css";
 import { useLoginMutation } from "../../store/state/userApiSlice";
+import { setCredentials } from "../../store/state/userSlice";
 import { useDispatch } from "react-redux";
+import logo from "../../assets/shopy-logo.svg";
 
 export default function Login() {
   const [useLogin, { isLoading, isError, error, data }] = useLoginMutation();
   const toast = useRef(null);
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("hook effect");
     if (data?.data) {
       dispatch(setCredentials(data.data));
+      // Navigate to home page after successful login
+      navigate("/home");
     }
-  }, [data]);
+  }, [data, dispatch, navigate]);
 
   const defaultValues = {
     username: "",
@@ -50,12 +55,21 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center p-20">
-      <Card title="Login" className="w-2/6">
-        <div className="grid flex justify-center grid-col-2 gap-4">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="p-3 col-span-2">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4">
+      <Card className="w-full max-w-md shadow-2xl">
+        <div className="flex flex-col items-center gap-6">
+          {/* Logo */}
+          <div className="flex flex-col items-center gap-2">
+            <img src={logo} alt="Shopy Logo" className="h-16 w-16" />
+            <h1 className="text-3xl font-bold text-gray-800">Welcome Back</h1>
+            <p className="text-gray-500 text-sm">Sign in to your account</p>
+          </div>
+
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+            <div className="flex flex-col gap-6">
               <Toast ref={toast} />
+              
+              {/* Username Field */}
               <Controller
                 name="username"
                 control={control}
@@ -72,8 +86,7 @@ export default function Login() {
                       <InputText
                         id={field.name}
                         value={field.value}
-                        size={"30"}
-                        className={classNames({
+                        className={classNames("w-full", {
                           "p-invalid": fieldState.error,
                         })}
                         onChange={(e) => field.onChange(e.target.value)}
@@ -84,8 +97,8 @@ export default function Login() {
                   </>
                 )}
               />
-            </div>
-            <div className="p-3 col-span-2">
+
+              {/* Password Field */}
               <Controller
                 name="password"
                 control={control}
@@ -102,12 +115,12 @@ export default function Login() {
                       <Password
                         id={field.name}
                         value={field.value}
-                        size={"30"}
                         feedback={false}
-                        className={classNames({
+                        className={classNames("w-full", {
                           "p-invalid": fieldState.error,
                         })}
                         onChange={(e) => field.onChange(e.target.value)}
+                        toggleMask
                       />
                       <label htmlFor={field.name}>Password</label>
                     </span>
@@ -115,9 +128,25 @@ export default function Login() {
                   </>
                 )}
               />
-            </div>
-            <div className="flex justify-center col-span-2 pt-2">
-              <Button label="Login" type="submit" />
+
+              {/* Buttons */}
+              <div className="flex flex-col gap-3 pt-4">
+                <Button 
+                  label="Sign In" 
+                  type="submit" 
+                  className="w-full"
+                  loading={isLoading}
+                />
+                <div className="text-center">
+                  <span className="text-gray-600 text-sm">Don't have an account? </span>
+                  <Button
+                    label="Sign Up"
+                    type="button"
+                    className="p-button-text p-button-sm"
+                    onClick={() => navigate("/register")}
+                  />
+                </div>
+              </div>
             </div>
           </form>
         </div>

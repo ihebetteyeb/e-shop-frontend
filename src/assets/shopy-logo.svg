@@ -1,0 +1,49 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Modern shopping cart with rounded design -->
+  <g filter="url(#glow)">
+    <!-- Cart body -->
+    <path d="M60 70 L75 140 C76 146 81 150 87 150 L143 150 C149 150 154 146 155 140 L165 90 C166 84 161 79 155 79 L80 79" 
+          stroke="url(#mainGradient)" 
+          stroke-width="8" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          fill="none"/>
+    
+    <!-- Cart handle -->
+    <path d="M60 70 L50 40 C48 34 42 30 36 30 L25 30" 
+          stroke="url(#mainGradient)" 
+          stroke-width="8" 
+          stroke-linecap="round"
+          fill="none"/>
+    
+    <!-- Stylized S integrated into cart -->
+    <path d="M95 95 C85 95 80 100 82 108 C84 116 92 118 100 120 C108 122 116 124 118 132 C120 140 115 145 105 145" 
+          stroke="url(#mainGradient)" 
+          stroke-width="7" 
+          stroke-linecap="round"
+          fill="none"/>
+    
+    <!-- Wheels with gradient fill -->
+    <circle cx="95" cy="165" r="8" fill="url(#mainGradient)"/>
+    <circle cx="135" cy="165" r="8" fill="url(#mainGradient)"/>
+    
+    <!-- Accent dots for modern touch -->
+    <circle cx="130" cy="95" r="3" fill="url(#mainGradient)"/>
+    <circle cx="145" cy="105" r="3" fill="url(#mainGradient)"/>
+  </g>
+</svg>

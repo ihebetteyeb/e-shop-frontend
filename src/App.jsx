@@ -15,7 +15,7 @@ function App() {
       fun().then((res) => {
         if (res.data) {
           console.log(res.data);
-          dispatch(setCredentials(res.data.accessToken));
+          dispatch(setCredentials(res.data));
         }
       });
     }

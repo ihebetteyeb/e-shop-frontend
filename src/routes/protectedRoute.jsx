@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 // eslint-disable-next-line react/prop-types
 export function ProtectedRoute({ children }) {
-  const { token, isLoading } = useAuth();
+  const { token, isLoading, role } = useAuth();
 
   useEffect(() => {
     console.log(token);
@@ -16,6 +16,10 @@ export function ProtectedRoute({ children }) {
   if (!token) {
     console.log("this is from protected route ");
     return <Navigate to={"/signin"} />;
+  }
+
+  if (role === "admin" && window.location.pathname !== "/dashboard") {
+    return <Navigate to={"/dashboard"} />;
   }
   return children;
 }

@@ -12,6 +12,8 @@ import groceriesConfig from "../pages/groceries/groceries.config";
 import dashboardConfig from "../pages/dashboard/dashboard.config";
 import productsConfig from "../components/products/products.config";
 import signupConfig from "../pages/Auth/login/signup/signup.config";
+import contactConfig from "../pages/contact/contact.config";
+import checkoutConfig from "../pages/checkout/checkout.config";
 
 const routeConfigs = [
   homeConfig,
@@ -21,10 +23,17 @@ const routeConfigs = [
   productsConfig,
   productConfig,
   signupConfig,
+  contactConfig,
+  checkoutConfig,
 ];
 
 const routes = [
   ...routeConfigs,
+  {
+    path: "/",
+    element: <Navigate to="/home" replace />,
+    public: true,
+  },
   {
     path: "404",
     element: <NotFound />,

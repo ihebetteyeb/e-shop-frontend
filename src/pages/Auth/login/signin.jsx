@@ -1,3 +1,5 @@
+// import logoNoBg from "../../../assets/shopy-logo.svg";
+
 // import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -48,10 +50,12 @@ function Home() {
   };
 
   useEffect(() => {
-    if (dataLogin?.access) {
-      dispatch(setCredentials(dataLogin?.access));
+    if (dataLogin?.token) {
+      dispatch(setCredentials(dataLogin));
+      // Navigate to home page after successful login
+      navigate("/home");
     }
-  }, [dataLogin]);
+  }, [dataLogin, dispatch, navigate]);
 
   if (isLoading) {
     return <p>isLoading...</p>;
@@ -59,13 +63,8 @@ function Home() {
   return (
     <div className="grid grid-cols-2 h-screen w-screen">
       <div className="w-full flex flex-col">
-        <div>
-          <img
-            alt="logo"
-            src="src/assets/logo-no-background.png"
-            width="90"
-            className="mr-2 mt-2"
-          />
+        <div className="hidden">
+          {/* Logo removed */}
         </div>
         <div className="flex flex-col gap-[50px] w-full h-full justify-center ">
           <form autoComplete="off" onSubmit={handleSubmit(handleLogin)}>
@@ -147,7 +146,7 @@ function Home() {
                 </small>
                 <div className="border-[1px]" />
               </div>
-              <div>
+              <div className="flex flex-col gap-4 items-center">
                 <Button
                   type="submit"
                   label="Sign in "
@@ -158,6 +157,15 @@ function Home() {
                     borderColor: "#91CD32",
                   }}
                 />
+                <div className="flex items-center justify-center">
+                  <span className="text-gray-600 text-sm">Don't have an account?</span>
+                  <Button
+                    label="Sign Up"
+                    type="button"
+                    className="p-button-text p-button-sm text-[#91CD32] ml-1"
+                    onClick={() => navigate("/signUp")}
+                  />
+                </div>
               </div>
             </div>
           </form>

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Button } from "primereact/button";
 import { Carousel } from "primereact/carousel";
 import { Tag } from "primereact/tag";
-import { ProductService } from "../../services/ProductService";
+import { useItemsQuery } from "../../store/state/itemApiSlice.jsx";
 import { Rating } from "primereact/rating";
 import "./itemCarousel.css";
 
 export default function ItemCarousel({ title, indicators, navigators }) {
-  const [products, setProducts] = useState([]);
+  const { data: products = [], isLoading } = useItemsQuery();
+
   const responsiveOptions = [
     {
       breakpoint: "1400px",
@@ -47,20 +49,20 @@ export default function ItemCarousel({ title, indicators, navigators }) {
     }
   };
 
-  useEffect(() => {
-    ProductService.getProductsSmall().then((data) =>
-      setProducts(data.slice(0, 9))
-    );
-  }, []);
 
   const productTemplate = (product) => {
     return (
-      <div className="grid grid-cols-2 text-center py-5 px-3">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.5 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="grid grid-cols-2 text-center py-5 px-3"
+      >
         <div className="flex col-span-2 justify-center">
           <img
-            src={`https://primefaces.org/cdn/primereact/images/product/${product.image}`}
+            src={`${product.image}`}
             alt={product.name}
-            className="shadow-md rounded-lg"
+            className="shadow-md rounded-lg h-64 w-full object-cover"
           />
         </div>
         <div className="flex flex-col justify-center items-center col-span-2">
@@ -74,12 +76,18 @@ export default function ItemCarousel({ title, indicators, navigators }) {
             ></Tag>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   };
 
   return (
-    <div className="flex flex-col text-center p-8">
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="flex flex-col text-center p-8"
+    >
       <h1 className="text-3xl font-bold  pb-10">{title}</h1>
       <Carousel
         value={products}
@@ -90,6 +98,6 @@ export default function ItemCarousel({ title, indicators, navigators }) {
         showIndicators={indicators}
         showNavigators={navigators}
       />
-    </div>
+    </motion.div>
   );
 }
