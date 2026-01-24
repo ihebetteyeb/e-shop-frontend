@@ -60,7 +60,7 @@ export default function ItemCarousel({ title, indicators, navigators }) {
       >
         <div className="flex col-span-2 justify-center">
           <img
-            src={`${product.image}`}
+            src={`https://primefaces.org/cdn/primereact/images/product/${product.image}`}
             alt={product.name}
             className="shadow-md rounded-lg h-64 w-full object-cover"
           />
