@@ -2,7 +2,7 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { logOut, setToken } from "./state/userSlice";
 
 const accesBaseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3000",
+  baseUrl: import.meta.env.VITE_API_URL || "http://localhost:3000",
   // credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const { token } = getState().auth;
@@ -16,7 +16,7 @@ const accesBaseQuery = fetchBaseQuery({
 });
 
 const refreshBaseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3000",
+  baseUrl: import.meta.env.VITE_API_URL || "http://localhost:3000",
   credentials: "include",
 });
 
